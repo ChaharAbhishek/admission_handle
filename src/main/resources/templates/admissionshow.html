@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Institute Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/all_admission}">Admission</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <h1>Admission List Of Students</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/admissions/new}" class="btn btn-primary btn-sm- sb-3">Add Student</a>
+        </div>
+    </div>
+    <table class="table table-dark table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Roll No.</th>
+            <th>Course ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone No.</th>
+            <th>Date Of Admission</th>
+            <th>Remarks</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "add: ${admissions}">
+            <td th:text = "${add.rollno}"></td>
+            <td th:text = "${add.courseid}"></td>
+            <td th:text = "${add.name}"></td>
+            <td th:text = "${add.address}"></td>
+            <td th:text = "${add.phoneno}"></td>
+            <td th:text = "${add.dateofadmission}"></td>
+            <td th:text = "${add.remark}"></td>
+            <td>
+                <a th:href = "@{/all_admission/edit/{id} (id=${add.rollno})}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
