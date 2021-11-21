@@ -32,7 +32,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="test-center">Update Student</h1>
             <div class="card-body">
-                <form th:action="@{/save_admission/{id} id=${admissions.rollno}}" th:object="${admissions}" method="post">
+                <form th:action="@{/save_admission/{id} (id=${admissions.rollno})}" th:object="${admissions}" method="post">
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Enter Your Name" />

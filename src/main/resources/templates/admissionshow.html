@@ -60,6 +60,7 @@
             <td th:text = "${add.remark}"></td>
             <td>
                 <a th:href = "@{/all_admission/edit/{id} (id=${add.rollno})}" class="btn btn-primary">Update</a>
+                <a th:href = "@{/all_admission/{id} (id=${add.rollno})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>

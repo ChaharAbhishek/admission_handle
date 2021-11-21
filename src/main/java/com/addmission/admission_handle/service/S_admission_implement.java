@@ -21,8 +21,8 @@ public class S_admission_implement implements S_admission{
     }
 
     @Override
-    public M_admission saveAdmission(M_admission m_admission) {
-        return r_admission.save(m_admission);
+    public void saveAdmission(M_admission m_admission) {
+        r_admission.save(m_admission);
     }
 
     @Override
@@ -31,7 +31,12 @@ public class S_admission_implement implements S_admission{
     }
 
     @Override
-    public M_admission updateAdmission(M_admission m_admission) {
-        return r_admission.save(m_admission);
+    public void updateAdmission(M_admission m_admission) {
+        r_admission.save(m_admission);
+    }
+
+    @Override
+    public void deleteAdmissionById(Long id) {
+        r_admission.deleteById(id);
     }
 }

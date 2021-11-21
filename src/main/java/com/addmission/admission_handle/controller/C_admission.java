@@ -5,12 +5,12 @@ import com.addmission.admission_handle.repository.R_admission;
 import com.addmission.admission_handle.service.S_admission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
-@RestController  //you cannnot use rest controller if you want to show html file o
+  //you cannnot use rest controller if you want to show html file o
 public class C_admission {
 
     //insert----update----delete----show
@@ -55,7 +55,7 @@ public class C_admission {
 
     //save admission
     @PostMapping("/save_admission")
-    public String saveStudent(@ModelAttribute("admissions") M_admission m_admission)
+    public String saveAdmission(@ModelAttribute("admissions") M_admission m_admission)
     {
         s_admission.saveAdmission(m_admission);
         return "redirect:/all_admission";
@@ -72,11 +72,11 @@ public class C_admission {
 
 
     @PostMapping("/save_admission/{id}")
-    public String updateAdmission(@PathVariable Long id, @ModelAttribute ("admissions") M_admission m_admission, Model model)
+    public String updateAdmission(@PathVariable Long id, @ModelAttribute ("admissions") M_admission m_admission)
     {
         //get admission detail from database by id
         M_admission exitingadmission = s_admission.getStudentById(id);
-        //exitingadmission.setRollno(id);
+        exitingadmission.setRollno(id);
         exitingadmission.setName(m_admission.getName());
         exitingadmission.setAddress(m_admission.getAddress());
         exitingadmission.setPhoneno(m_admission.getPhoneno());
@@ -86,8 +86,17 @@ public class C_admission {
 
         //save updated data
         s_admission.updateAdmission(exitingadmission);
-        return "redirect:/all_admissions";
+        return "redirect:/all_admission";
 
+    }
+
+    //handler method to handle delete admission request
+    @GetMapping("/all_admission/{id}")
+    public String deleteAdmission(@PathVariable Long id)
+    {
+
+        s_admission.deleteAdmissionById(id);
+        return "redirect:/all_admission";
     }
 
 
